@@ -17,6 +17,7 @@ namespace EURISTest.App_Start
             CreateMap<ICatalog, Catalog>().ReverseMap();
             CreateMap<IProductCatalog, ProductCatalog>().ReverseMap();
             CreateMap<ProductViewModel, Product>().ReverseMap();
+            CreateMap<CatalogViewModel, Catalog>().ReverseMap();
         }
     }
 }

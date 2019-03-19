@@ -11,6 +11,8 @@ namespace EURIS.Service.UnitOfWork
     {
         IProductManager ProductManagers { get; set; }
 
+        ICatalogManager CatalogManager { get; set; }
+
         void Complete();
     }
 }

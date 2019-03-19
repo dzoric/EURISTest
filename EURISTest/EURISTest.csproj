@@ -213,6 +213,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -221,6 +222,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CatalogViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -345,6 +347,11 @@
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Catalog\Index.cshtml" />
+    <Content Include="Views\Catalog\Create.cshtml" />
+    <Content Include="Views\Catalog\Edit.cshtml" />
+    <Content Include="Views\Catalog\Delete.cshtml" />
+    <Content Include="Views\Catalog\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

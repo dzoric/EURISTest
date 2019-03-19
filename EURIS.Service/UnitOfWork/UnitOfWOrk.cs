@@ -15,10 +15,13 @@ namespace EURIS.Service.UnitOfWork
 
         public IProductManager ProductManagers { get; set; }
 
+        public ICatalogManager CatalogManager { get; set; }
+
         public UnitOfWork(LocalDbEntities context)
         {
             _context = context;
             ProductManagers = new ProductManager(context);
+            CatalogManager = new CatalogManager(context);
         }
 
         public void Complete()

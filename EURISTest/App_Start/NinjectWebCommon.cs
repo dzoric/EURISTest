@@ -53,6 +53,7 @@ namespace EURISTest.App_Start
                 kernel.Bind<IProductCatalog>().To<ProductCatalog>();
                 kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
                 kernel.Bind<IProductManager>().To<ProductManager>();
+                kernel.Bind<ICatalogManager>().To<CatalogManager>();
 
                 RegisterServices(kernel);
                 return kernel;

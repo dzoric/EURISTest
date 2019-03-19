@@ -62,7 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRepository\ICatalogManager.cs" />
     <Compile Include="IRepository\IProductManager.cs" />
+    <Compile Include="Repository\CatalogManager.cs" />
     <Compile Include="Repository\ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />

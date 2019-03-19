@@ -1,0 +1,35 @@
+﻿@model EURISTest.ViewModels.CatalogViewModel
+
+@{
+    ViewBag.Title = "Catalog";
+}
+
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>Id</th>
+        <th>Code</th>
+        <th>Description</th>
+    </tr>
+
+    @foreach (var item in ViewBag.Catalogs)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CatalogId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CatalogId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CatalogId })
+            </td>
+            <td>@item.CatalogId</td>
+            <td>@item.Code</td>
+            <td>@item.Description</td>
+        </tr>
+    }
+
+</table>
