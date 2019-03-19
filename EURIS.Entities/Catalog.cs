@@ -13,16 +13,16 @@ namespace EURIS.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Product : IProduct
+    public partial class Catalog : ICatalog
     {
-        public Product()
+        public Catalog()
         {
             this.ProductCatalog = new HashSet<ProductCatalog>();
         }
     
+        public int CatalogId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
-        public int ProductId { get; set; }
     
         public virtual ICollection<ProductCatalog> ProductCatalog { get; set; }
     }

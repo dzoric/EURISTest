@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoMapper;
+using EURISTest.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +18,7 @@ namespace EURISTest
     {
         protected void Application_Start()
         {
+            Mapper.Initialize(cfg => cfg.AddProfile<AutoMapperProfile>());
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
