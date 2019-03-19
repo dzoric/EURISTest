@@ -21,11 +21,11 @@
 @foreach (var item in ViewBag.Products) {
     <tr>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
-        <td>@item.Id</td>
+        <td>@item.ProductId</td>
         <td>@item.Code</td>
         <td>@item.Description</td>
     </tr>
