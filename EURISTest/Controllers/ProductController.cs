@@ -79,5 +79,55 @@ namespace EURISTest.Controllers
 
             return View(product);
         }
+
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                var product = _unitOfWork.ProductManagers.FindProductById((int)id);
+                if (product == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(Mapper.Map<ProductViewModel>(product));
+            }
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var product = _unitOfWork.ProductManagers.FindProductById(id);
+            _unitOfWork.ProductManagers.DeleteProduct(Mapper.Map<Product>(product));
+            _unitOfWork.Complete();
+            return RedirectToAction("Index", "Product");
+        }
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var product = _unitOfWork.ProductManagers.FindProductById((int)id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Mapper.Map<ProductViewModel>(product));
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _unitOfWork.ProductManagers.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }
