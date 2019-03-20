@@ -17,5 +17,7 @@ namespace EURIS.Service.IRepository
         void DeleteProductCatalog(IProductCatalog productCatalog);
 
         void AddProductCatalog(IProductCatalog productCatalog);
+
+        IList<CheckBoxViewModel> GetEmptyCheckBoxList();
     }
 }

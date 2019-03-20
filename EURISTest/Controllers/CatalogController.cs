@@ -2,6 +2,8 @@
 using EURIS.Entities;
 using EURIS.Service.Common.ServicesCommon;
 using EURIS.Service.UnitOfWork;
+using EURISTest.Controllers.ControllerServices;
+using EURISTest.Controllers.IControllerServices;
 using EURISTest.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -15,9 +17,11 @@ namespace EURISTest.Controllers
     public class CatalogController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        public CatalogController(IUnitOfWork unitOfWork)
+        private readonly ICatalogControllerServices _catalogControllerServices;
+        public CatalogController(IUnitOfWork unitOfWork, ICatalogControllerServices catalogControllerServices)
         {
             _unitOfWork = unitOfWork;
+            _catalogControllerServices = catalogControllerServices;
         }
 
         public ActionResult Index()
@@ -29,19 +33,18 @@ namespace EURISTest.Controllers
             return View();
         }
 
-        public ActionResult Create()
+        public ActionResult Create(Catalog catalog)
         {
-            return View();
+            return View(_catalogControllerServices.CreateCatalogEmptyCheckBoxList(catalog));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Code, Description")]CatalogViewModel catalog)
+        public ActionResult Create([Bind(Include = "Code, Description, Products")]CatalogViewModel catalog)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.CatalogManager.CreateCatalog(Mapper.Map<Catalog>(catalog));
-                _unitOfWork.Complete();
+                _catalogControllerServices.CreateCatalog(catalog);
                 return RedirectToAction("Index", "Catalog");
             }
 
@@ -62,13 +65,7 @@ namespace EURISTest.Controllers
                     return HttpNotFound();
                 }
 
-                var checkBoxList = _unitOfWork.ProductCatalogManager.GetCheckBoxList((int)id);
-
-                var catalogViewModel = Mapper.Map<CatalogViewModel>(catalog);
-
-                catalogViewModel.Products = checkBoxList;
-
-                return View(catalogViewModel);
+                return View(_catalogControllerServices.GetCatalogDetailsIncludingProducts(catalog));
             }
         }
 
@@ -78,29 +75,7 @@ namespace EURISTest.Controllers
         {
             if (ModelState.IsValid)
             {
-                var catalogEntity = Mapper.Map<Catalog>(catalog);
-
-                foreach (var pc in _unitOfWork.ProductCatalogManager.GetProductCatalogsList())
-                {
-                    if (pc.CatalogId == catalog.CatalogId)
-                    {
-                        _unitOfWork.ProductCatalogManager.DeleteProductCatalog(pc);
-                    }
-                }
-
-                foreach (var p in catalog.Products)
-                {
-                    if (p.Checked)
-                    {
-                        var productCatalog = new ProductCatalog();
-                        productCatalog.CatalogId = catalog.CatalogId;
-                        productCatalog.ProductId = p.Id;
-
-                        _unitOfWork.ProductCatalogManager.AddProductCatalog(productCatalog);
-                    }
-                }
-
-                _unitOfWork.Complete();
+                _catalogControllerServices.EditCatalog(catalog);
                 return RedirectToAction("Index", "Catalog");
             }
 
@@ -145,13 +120,7 @@ namespace EURISTest.Controllers
             {
                 return HttpNotFound();
             }
-            var checkBoxList = _unitOfWork.ProductCatalogManager.GetCheckBoxList((int)id);
-
-            var catalogViewModel = Mapper.Map<CatalogViewModel>(catalog);
-
-            catalogViewModel.Products = checkBoxList;
-
-            return View(catalogViewModel);
+            return View(_catalogControllerServices.GetCatalogDetailsIncludingProducts(catalog));
         }
 
         public ActionResult ViewProducts(int? id)
@@ -165,13 +134,8 @@ namespace EURISTest.Controllers
             {
                 return HttpNotFound();
             }
-            var checkBoxList = _unitOfWork.ProductCatalogManager.GetCheckBoxList((int)id);
 
-            var catalogViewModel = Mapper.Map<CatalogViewModel>(catalog);
-
-            catalogViewModel.Products = checkBoxList;
-
-            return View(catalogViewModel);
+            return View(_catalogControllerServices.GetCatalogDetailsIncludingProducts(catalog));
         }
 
         protected override void Dispose(bool disposing)

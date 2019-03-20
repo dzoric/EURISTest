@@ -10,6 +10,8 @@ namespace EURISTest.App_Start
     using EURIS.Service.IRepository;
     using EURIS.Service.Repository;
     using EURIS.Service.UnitOfWork;
+    using EURISTest.Controllers.ControllerServices;
+    using EURISTest.Controllers.IControllerServices;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
@@ -55,6 +57,7 @@ namespace EURISTest.App_Start
                 kernel.Bind<IProductManager>().To<ProductManager>();
                 kernel.Bind<ICatalogManager>().To<CatalogManager>();
                 kernel.Bind<IProductCatalogManager>().To<ProductCatalogManager>();
+                kernel.Bind<ICatalogControllerServices>().To<CatalogControllerServices>();
 
                 RegisterServices(kernel);
                 return kernel;

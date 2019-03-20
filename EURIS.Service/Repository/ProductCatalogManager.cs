@@ -44,6 +44,28 @@ namespace EURIS.Service.Repository
             return checkedBoxList;
         }
 
+        public IList<CheckBoxViewModel> GetEmptyCheckBoxList()
+        {
+            var results = from p in _context.Product
+                          select new
+                          {
+                              p.ProductId,
+                              p.Code,
+                              p.Description,
+                              Checked = ((from pc in _context.ProductCatalog
+                                          select pc).Count() > 0)
+                          };
+
+            var checkedBoxList = new List<CheckBoxViewModel>();
+
+            foreach (var r in results)
+            {
+                checkedBoxList.Add(new CheckBoxViewModel { Id = r.ProductId, Code = r.Code });
+            }
+
+            return checkedBoxList;
+        }
+
         public IEnumerable<IProductCatalog> GetProductCatalogsList()
         {
             return _context.ProductCatalog.ToList();
