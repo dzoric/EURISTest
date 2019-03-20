@@ -26,11 +26,7 @@ namespace EURISTest.Controllers
 
         public ActionResult Index()
         {
-            var catalogsList = _unitOfWork.CatalogManager.GetCatalogList();
-
-            ViewBag.Catalogs = Mapper.Map<IEnumerable<CatalogViewModel>>(catalogsList);
-
-            return View();
+            return View(_unitOfWork.CatalogManager.GetCatalogList());
         }
 
         public ActionResult Create(Catalog catalog)

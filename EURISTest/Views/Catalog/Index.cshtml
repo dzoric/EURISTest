@@ -1,4 +1,4 @@
-﻿@model EURISTest.ViewModels.CatalogViewModel
+﻿@model IEnumerable<EURIS.Entities.Catalog>
 
 @{
     ViewBag.Title = "Catalog";
@@ -13,13 +13,21 @@
 <table>
     <tr>
         <th></th>
-        <th>Id</th>
-        <th>Code</th>
-        <th>Description</th>
-        <th>Products</th>
+        <th>
+            @Html.DisplayNameFor(model => model.CatalogId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            Product
+        </th>
     </tr>
 
-    @foreach (var item in ViewBag.Catalogs)
+    @foreach (var item in Model)
     {
         <tr>
             <td>

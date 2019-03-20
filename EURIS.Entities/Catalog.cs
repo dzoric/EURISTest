@@ -12,7 +12,8 @@ namespace EURIS.Entities
     using EURIS.Service.Common.ServicesCommon;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Catalog : ICatalog
     {
         public Catalog()
@@ -20,6 +21,7 @@ namespace EURIS.Entities
             this.ProductCatalog = new HashSet<ProductCatalog>();
         }
     
+        [Display(Name = "Id")]
         public int CatalogId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
