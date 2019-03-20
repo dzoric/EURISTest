@@ -26,6 +26,22 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Products)
+        </dt>
+
+        <dd>
+            @foreach (var item in Model.Products)
+            {
+                if (item.Checked)
+                {
+                    <div>
+                        @item.Code
+                    </div>
+                }
+            }
+        </dd>
+
     </dl>
 </div>
 <p>

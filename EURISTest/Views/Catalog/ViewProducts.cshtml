@@ -1,0 +1,34 @@
+﻿@model EURISTest.ViewModels.CatalogViewModel
+
+@{
+    ViewBag.Title = "View products";
+}
+
+<h2>Products list</h2>
+
+<div>
+    <h4>Catalog @Model.Code products list:</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Products)
+        </dt>
+
+        <dd>
+            @foreach (var item in Model.Products)
+            {
+                if (item.Checked)
+                {
+                    <div>
+                        @item.Code
+                    </div>
+                }
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.CatalogId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

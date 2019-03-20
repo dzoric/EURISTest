@@ -16,6 +16,7 @@
         <th>Id</th>
         <th>Code</th>
         <th>Description</th>
+        <th>Products</th>
     </tr>
 
     @foreach (var item in ViewBag.Catalogs)
@@ -29,6 +30,7 @@
             <td>@item.CatalogId</td>
             <td>@item.Code</td>
             <td>@item.Description</td>
+            <td>@Html.ActionLink("View Products", "ViewProducts", new { id = item.CatalogId})</td>
         </tr>
     }
 
