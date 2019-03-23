@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using EURIS.Entities;
 using EURIS.Service.Common.ServicesCommon;
-using EURIS.Service.IRepository;
+using EURIS.Service.IService;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EURIS.Service.Repository
+namespace EURIS.Service.Service
 {
     public class CatalogManager : ICatalogManager
     {

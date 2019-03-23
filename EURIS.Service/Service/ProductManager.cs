@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using EURIS.Entities;
 using System.Data.Entity;
-using EURIS.Service.IRepository;
+using EURIS.Service.IService;
 using EURIS.Service.Common.ServicesCommon;
 using System.Data;
 using AutoMapper;
 
-namespace EURIS.Service.Repository
+namespace EURIS.Service.Service
 {
     public class ProductManager : IProductManager
     {

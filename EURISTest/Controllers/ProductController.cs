@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using EURIS.Service;
 using EURIS.Entities;
-using EURIS.Service.Repository;
+using EURIS.Service.Service;
 using EURIS.Service.UnitOfWork;
 using AutoMapper;
 using EURISTest.ViewModels;

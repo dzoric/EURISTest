@@ -7,8 +7,8 @@ namespace EURISTest.App_Start
     using System.Web;
     using EURIS.Entities;
     using EURIS.Service.Common.ServicesCommon;
-    using EURIS.Service.IRepository;
-    using EURIS.Service.Repository;
+    using EURIS.Service.IService;
+    using EURIS.Service.Service;
     using EURIS.Service.UnitOfWork;
     using EURISTest.Controllers.ControllerServices;
     using EURISTest.Controllers.IControllerServices;

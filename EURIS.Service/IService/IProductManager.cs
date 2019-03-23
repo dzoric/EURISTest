@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EURIS.Service.IRepository
+namespace EURIS.Service.IService
 {
     public interface IProductManager : IDisposable
     {

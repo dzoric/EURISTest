@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EURIS.Entities;
-using EURIS.Service.Repository;
-using EURIS.Service.IRepository;
+using EURIS.Service.Service;
+using EURIS.Service.IService;
 
 namespace EURIS.Service.UnitOfWork
 {
